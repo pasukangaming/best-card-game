@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emberfall Duel — a card battler</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="table" aria-label="Emberfall Duel card table">
+  <header id="topbar">
+    <div id="brand"><span class="brand-flame" aria-hidden="true"></span>EMBERFALL DUEL</div>
+    <div id="turn-banner" role="status" aria-live="polite">Your turn</div>
+    <div id="top-actions">
+      <button id="btn-sound" type="button" title="Toggle sound (M)">Sound: on</button>
+      <button id="btn-help" type="button" title="How to play (H)">How to play</button>
+      <button id="btn-restart" type="button" title="Restart the duel (R)">Restart</button>
+    </div>
+  </header>
+
+  <section id="foe-zone" class="side-zone" aria-label="Opponent">
+    <div class="hero-card foe">
+      <div class="portrait foe-portrait" aria-hidden="true">S</div>
+      <div class="hero-info">
+        <div class="hero-name">Sable, Ash Warden</div>
+        <div class="hero-hp"><span class="hp-heart" aria-hidden="true"></span><span id="foe-hp">30</span><span class="hp-max">/ 30</span></div>
+        <div class="hero-hpbar"><div id="foe-hpbar-fill" class="hpbar-fill foe-fill" style="width:100%"></div></div>
+        <div class="hero-mana" id="foe-mana" aria-label="Opponent mana"></div>
+      </div>
+      <div class="deck-pile" id="foe-deck" title="Opponent deck"><span id="foe-deck-count">26</span></div>
+      <div class="hand-pile" id="foe-hand" title="Opponent hand"></div>
+    </div>
+    <div id="foe-board" class="board" aria-label="Opponent creatures"></div>
+  </section>
+
+  <section id="mid-zone">
+    <div id="log" aria-live="polite" aria-label="Battle log"></div>
+    <div id="mid-actions">
+      <div id="resonance-note" title="Play a second card of the same suit in one turn to empower it">Resonance: a 2nd card of one suit in a turn is stronger</div>
+      <button id="btn-end-turn" type="button">End Turn <span class="key-hint">Space</span></button>
+    </div>
+  </section>
+
+  <section id="you-zone" class="side-zone" aria-label="You">
+    <div id="you-board" class="board" aria-label="Your creatures"></div>
+    <div class="hero-card you">
+      <div class="portrait you-portrait" aria-hidden="true">E</div>
+      <div class="hero-info">
+        <div class="hero-name">Ember Apprentice (you)</div>
+        <div class="hero-hp"><span class="hp-heart" aria-hidden="true"></span><span id="you-hp">30</span><span class="hp-max">/ 30</span></div>
+        <div class="hero-hpbar"><div id="you-hpbar-fill" class="hpbar-fill you-fill" style="width:100%"></div></div>
+        <div class="hero-mana" id="you-mana" aria-label="Your mana"></div>
+      </div>
+      <div class="deck-pile" id="you-deck" title="Your deck"><span id="you-deck-count">26</span></div>
+    </div>
+  </section>
+
+  <section id="hand-zone" aria-label="Your hand">
+    <div id="hand-label">Your hand <span id="hand-count"></span></div>
+    <div id="hand" class="hand"></div>
+  </section>
+</div>
+
+<div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+  <div id="overlay-card" class="overlay-card"></div>
+</div>
+
+<div id="toast" class="toast hidden" role="status"></div>
+<p id="status" class="sr-only" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
